@@ -1,0 +1,67 @@
+╔══════════════════════════════════════════════════════════════╗
+║           ChronoLedger — Audit & Reconciliation Report       ║
+╚══════════════════════════════════════════════════════════════╝
+Generated : 2026-10-30 06:20:41 UTC
+
+── Pipeline Runs (last 10) ──────────────────────────────────
+
+  Run  : f1cfc66a-5ac6-425f-aa5f-0126bd53d607
+  File : data\sample\sample_events.csv
+  Time : 2026-10-30 06:20:41.507723+00:00  [52ms]
+  Status : SUCCESS
+  Counts → input:15  accepted:12  rejected:3  dup:11  conflict:1
+             events_inserted:0  dim_versions:0  late:0
+  ────────────────────────────────────────────────────────────
+
+  Run  : 6df73059-573e-45ad-b155-f94dc99108a7
+  File : data\sample\sample_events.csv
+  Time : 2026-10-30 06:20:03.855421+00:00  [73ms]
+  Status : SUCCESS
+  Counts → input:15  accepted:12  rejected:3  dup:11  conflict:1
+             events_inserted:0  dim_versions:0  late:0
+  ────────────────────────────────────────────────────────────
+
+  Run  : 7f747040-7adc-47b5-be8c-76f47d4c5aa8
+  File : C:\Users\ASUS\Downloads\yotta\chronoledger\data\sample\sample_events.csv
+  Time : 2026-10-30 06:19:48.443206+00:00  [89ms]
+  Status : SUCCESS
+  Counts → input:15  accepted:12  rejected:3  dup:1  conflict:1
+             events_inserted:10  dim_versions:9  late:0
+  ────────────────────────────────────────────────────────────
+
+── Event Ledger (customer_events) ───────────────────────────
+  Total events       : 10
+  Unique customers   : 5
+  Earliest event_ts  : 2024-01-01 00:00:00+00:00
+  Latest event_ts    : 2024-04-01 00:00:00+00:00
+  First ingested     : 2026-10-30 06:19:48.448659+00:00
+  Last ingested      : 2026-10-30 06:19:48.448659+00:00
+
+── SCD Type 2 Dimension (dim_customer) ──────────────────────
+  Total versions     : 9
+  Total customers    : 5
+  Current versions   : 5
+  Avg versions/cust  : 1.80
+
+── Rejected / Quarantined Records ───────────────────────────
+  Total rejected     : 12
+  Runs with rejects  : 3
+
+  Top rejection reasons:
+    [   3] CONFLICT: event_id 'E003' already exists in the ledger with payload_hash '5ab87e
+    [   3] malformed timestamp: 'not-a-timestamp' — expected ISO 8601 with timezone, e.g. '
+    [   3] missing required field: 'customer_name'
+    [   3] missing required field: 'customer_id'
+
+── Temporal Integrity Check ─────────────────────────────────
+  ✓ No interval violations detected.
+  ✓ No customers with multiple current versions.
+
+── Current Customer Snapshot (top 10 by versions) ───────────
+  Customer     Name                 City            Current Since             Versions
+  ────────────────────────────────────────────────────────────────────────────────
+  C1           Alice Kumar          Bangalore       2024-03-01 00:00:00+00:00 3
+  C2           Bob Singh            Pune            2024-02-15 00:00:00+00:00 2
+  C4           Dave Rao             Hyderabad       2024-02-10 00:00:00+00:00 2
+  C3           Carol Mehta          Delhi           2024-01-15 00:00:00+00:00 1
+  C5           Eve Nair             Kochi           2024-04-01 00:00:00+00:00 1

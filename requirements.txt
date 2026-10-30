@@ -1,0 +1,33 @@
+# ChronoLedger — Python Dependencies
+#
+# Python >= 3.11 required (uses zoneinfo, match-case, tomllib)
+# Tested with Python 3.14.6
+#
+# PostgreSQL >= 15 required (partial indexes, GENERATED columns work correctly)
+# Tested with PostgreSQL 17 (via Docker image postgres:17-alpine)
+
+# Database driver — psycopg2 is the stable, mature PostgreSQL adapter for Python.
+# We use psycopg2-binary (includes libpq bundled) so no separate C library install is needed.
+# Binary wheels are fine for local development; for production use the source package.
+psycopg2-binary>=2.9.9
+
+# Data manipulation — used only for synthetic data generation and benchmark reporting.
+# Not used inside the core pipeline (pipeline uses plain SQL + Python dicts).
+pandas>=2.2.0
+
+# Test framework
+pytest>=8.0.0
+pytest-cov>=5.0.0   # coverage reports; helps verify tests actually hit the code
+
+# Environment variable loading — reads .env automatically so we don't have to
+# export variables manually in the shell before every run.
+python-dotenv>=1.0.0
+
+# No further dependencies. All other functionality uses Python's standard library:
+#   hashlib  — SHA-256 hashing
+#   uuid     — run_id generation
+#   logging  — structured log output
+#   csv      — CSV reading
+#   json     — quarantine payload storage
+#   datetime — timestamp handling
+#   pathlib  — file paths

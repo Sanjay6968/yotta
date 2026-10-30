@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+# Tell pytest where the project root is so `from src.X import Y` works.
+pythonpath = ["."]
+testpaths = ["tests"]
+# Show short test summary for failures (s = skip, f = fail, e = error)
+addopts = "-v --tb=short"
